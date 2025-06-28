@@ -15,48 +15,48 @@ echo "📁 Navigating to /var/www"
 cd /var/www
 
 # Clone if missing
-if [ ! -d vivavista_cicd_ca ]; then
+if [ ! -d vivavista_cicd_us ]; then
   echo "🌀 Cloning repository..."
-  git clone https://github.com/StrixSid07/vivavista_cicd_ca.git
+  git clone https://github.com/StrixSid07/vivavista_cicd_us.git
 fi
 
 echo "📦 Pulling latest changes..."
-cd vivavista_cicd_ca
+cd vivavista_cicd_us
 git fetch origin
 git reset --hard origin/main
 
 ############### BACKEND ##################
-echo "🚀 Setting up backend (vivavistacabackend)..."
-cd vivavistacabackend
+echo "🚀 Setting up backend (vivavistausbackend)..."
+cd vivavistausbackend
 npm install
 
 echo "🔁 Restarting backend with PM2..."
-pm2 stop vivavista-backend-ca || true
-pm2 start server.js --name vivavista-backend-ca --watch --time --log-date-format="YYYY-MM-DD HH:mm Z"
+pm2 stop vivavista-backend-us || true
+pm2 start server.js --name vivavista-backend-us --watch --time --log-date-format="YYYY-MM-DD HH:mm Z"
 pm2 save
 pm2 startup
 
 ############### ADMIN PANEL ##################
-echo "🛠️ Building admin panel (vivavistacaadmin)..."
-cd ../vivavistacaadmin
+echo "🛠️ Building admin panel (vivavistausadmin)..."
+cd ../vivavistausadmin
 npm install
 npm run build
 
-echo "📤 Deploying admin panel to /var/www/vivavistacaadmin..."
-mkdir -p /var/www/vivavistacaadmin
-rm -rf /var/www/vivavistacaadmin/*
-cp -r dist/* /var/www/vivavistacaadmin/
+echo "📤 Deploying admin panel to /var/www/vivavistausadmin..."
+mkdir -p /var/www/vivavistausadmin
+rm -rf /var/www/vivavistausadmin/*
+cp -r dist/* /var/www/vivavistausadmin/
 
 ############### MAIN WEBSITE ##################
-echo "🌐 Building main website (vivavistaca)..."
-cd ../vivavistaca
+echo "🌐 Building main website (vivavistaus)..."
+cd ../vivavistaus
 npm install
 npm run build
 
-echo "📤 Deploying main website to /var/www/vivavistaca..."
-mkdir -p /var/www/vivavistaca
-rm -rf /var/www/vivavistaca/*
-cp -r dist/* /var/www/vivavistaca/
+echo "📤 Deploying main website to /var/www/vivavistaus..."
+mkdir -p /var/www/vivavistaus
+rm -rf /var/www/vivavistaus/*
+cp -r dist/* /var/www/vivavistaus/
 
 echo "✅ Deployment completed successfully!"
 EOF
