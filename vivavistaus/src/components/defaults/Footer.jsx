@@ -113,7 +113,7 @@ const Footer = () => {
                   href="mailto:admin@vivavistavacations.us"
                   className="block -mt-4 md:w-60 md:mt-0 overflow-hidden text-ellipsis md:whitespace-nowrap"
                 >
-                  admin@vivavistavacations.us mail
+                  admin@vivavistavacations.us
                 </a>
               </span>
             </li>
