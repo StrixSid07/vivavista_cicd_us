@@ -177,16 +177,16 @@ if (isLocal) {
   // 🔹 Production Server (HTTPS)
   // const sslOptions = {
   //   key: fs.readFileSync(
-  //     "/etc/letsencrypt/live/vivavistavacations.ca/privkey.pem"
+  //     "/etc/letsencrypt/live/vivavistavacations.us/privkey.pem"
   //   ),
   //   cert: fs.readFileSync(
-  //     "/etc/letsencrypt/live/vivavistavacations.ca/fullchain.pem"
+  //     "/etc/letsencrypt/live/vivavistavacations.us/fullchain.pem"
   //   ),
   // };
 
   // https.createServer(sslOptions, app).listen(PORT, "0.0.0.0", () => {
   //   console.log(
-  //     `🚀 Secure Server running on https://api.vivavistavacations.ca:${PORT}`
+  //     `🚀 Secure Server running on https://api.vivavistavacations.us:${PORT}`
   //   );
   // });
   app.listen(PORT, "0.0.0.0", () =>

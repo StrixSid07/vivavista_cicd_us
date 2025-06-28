@@ -40,7 +40,7 @@ const TermsAndConditions = () => {
       <section className="mb-6">
         <h2 className="text-2xl font-semibold mb-4">Booking Conditions</h2>
         <p className="mb-4">
-          The following terms and conditions ("Terms and Conditions") apply to all travel and travel-related services or arrangements offered for sale by Vivavistavacations.ca. Vivavistavacations.ca is a trading name of Viva Vista Vacations Ltd. These booking conditions form the basis of your contract with us. The terms "service," "services," or "travel arrangements" used throughout refer to bookings for flights, accommodation or hotels, resorts, transfers, excursions, car rentals, trains, cruises, ferries, coaches, or any other travel-related services.
+          The following terms and conditions ("Terms and Conditions") apply to all travel and travel-related services or arrangements offered for sale by vivavistavacations.us. vivavistavacations.us is a trading name of Viva Vista Vacations Ltd. These booking conditions form the basis of your contract with us. The terms "service," "services," or "travel arrangements" used throughout refer to bookings for flights, accommodation or hotels, resorts, transfers, excursions, car rentals, trains, cruises, ferries, coaches, or any other travel-related services.
         </p>
         <p className="mb-4">
           All references in these terms to "trip," "booking," "contract," "holiday," or "vacation" refer to such travel arrangements or any combination of services offered by us, unless otherwise specified.

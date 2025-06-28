@@ -118,10 +118,10 @@ const PrivacyPolicy = () => {
           at any time. We may contact you with special offers and brochures. To
           stop receiving marketing messages, email us at{" "}
           <a
-            href="mailto:admin@vivavistavacations.ca"
+            href="mailto:admin@vivavistavacations.us"
             className="text-deep-orange-600 underline"
           >
-            admin@vivavistavacations.ca
+            admin@vivavistavacations.us
           </a>
           .
         </p>
@@ -180,10 +180,10 @@ const PrivacyPolicy = () => {
         <p className="mt-2">
           For a copy of your stored data, contact us at{" "}
           <a
-            href="mailto:admin@vivavistavacations.ca"
+            href="mailto:admin@vivavistavacations.us"
             className="text-deep-orange-600 underline"
           >
-            admin@vivavistavacations.ca
+            admin@vivavistavacations.us
           </a>{" "}
           with proof of identification.
         </p>
@@ -258,10 +258,10 @@ const PrivacyPolicy = () => {
         <p className="mb-2">
           <strong>Email:</strong>{" "}
           <a
-            href="mailto:admin@vivavistavacations.ca"
+            href="mailto:admin@vivavistavacations.us"
             className="text-deep-orange-600 underline"
           >
-            admin@vivavistavacations.ca
+            admin@vivavistavacations.us
           </a>
         </p>
         <p>

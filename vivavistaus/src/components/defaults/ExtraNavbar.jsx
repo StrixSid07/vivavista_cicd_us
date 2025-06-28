@@ -33,12 +33,12 @@ const ExtraNavbar = () => {
             <span className="hidden sm:inline">{region === "USA" ? "1 8** *** ****" : region === "Canada" ? "1 8** *** ****" : "0203 780 5023"}</span>
           </a>
           <a
-            href="mailto:admin@vivavistavacations.ca"
+            href="mailto:admin@vivavistavacations.us"
             className="flex items-center space-x-2 transition-colors duration-300 ease-in-out hover:text-deep-orange-700 text-lg"
           >
             <FaEnvelope />
             <span className="hidden sm:inline">
-              admin@vivavistavacations.ca
+              admin@vivavistavacations.us
             </span>
           </a>
         </div>

@@ -23,7 +23,7 @@ const SpeedDiel = () => {
 
       {/* Email Link */}
       <a
-        href="mailto:admin@vivavistavacations.ca"
+        href="mailto:admin@vivavistavacations.us"
         className="text-green-500 hover:text-teal-600 transition-all duration-500 ease-in-out hover:scale-110"
       >
         <FaEnvelope size={24} />

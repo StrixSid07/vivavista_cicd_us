@@ -310,7 +310,7 @@ const Footer = () => {
         >
           &copy; {currentYear}{" "}
           <span className="text-orange-600 transition duration-700 hover:text-orange-400">
-            <a href="https://www.vivavistavacations.ca/">
+            <a href="https://www.vivavistavacations.us/">
               Viva Vista Vacations
             </a>
             .

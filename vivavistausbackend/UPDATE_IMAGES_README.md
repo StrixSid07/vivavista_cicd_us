@@ -15,7 +15,7 @@ The image handling has been updated to store full URLs in the database instead o
 The server URL is determined by the `SERVER_URL` environment variable. Make sure to set this variable to the appropriate URL for each environment:
 
 - Development: `http://localhost:5003`
-- Production: `https://api.vivavistavacations.ca`
+- Production: `https://api.vivavistavacations.us`
 
 ## Updating Existing Images
 

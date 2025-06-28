@@ -91,10 +91,10 @@ export default function FooterNew() {
                   />
                   {/* email link stays <a> */}
                   <a
-                    href="mailto:admin@vivavistavacations.ca"
+                    href="mailto:admin@vivavistavacations.us"
                     className="text-white hover:text-orange-600 break-all"
                   >
-                    admin@vivavistavacations.ca
+                    admin@vivavistavacations.us
                   </a>
                 </li>
 
@@ -173,7 +173,7 @@ export default function FooterNew() {
           >
             &copy; {currentYear}{" "}
             <a
-              href="https://www.vivavistavacations.ca/"
+              href="https://www.vivavistavacations.us/"
               className="hover:text-orange-500 transition duration-700 text-orange-700"
             >
               Viva Vista Vacations

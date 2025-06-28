@@ -172,10 +172,10 @@ const CookiePolicy = () => {
           If you have any questions or comments regarding our Cookie Policy,
           feel free to reach us at{" "}
           <a
-            href="mailto:admin@vivavistavacations.ca"
+            href="mailto:admin@vivavistavacations.us"
             className="text-deep-orange-600 underline"
           >
-            admin@vivavistavacations.ca
+            admin@vivavistavacations.us
           </a>
           .
         </p>

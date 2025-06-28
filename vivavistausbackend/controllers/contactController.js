@@ -19,7 +19,7 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false, // Use TLS
   auth: {
-    user: "admin@vivavistavacations.ca",
+    user: "admin@vivavistavacations.us",
     pass: "rbsyybdjnlqczmyy", // App password
   },
   tls: {
@@ -28,11 +28,11 @@ const transporter = nodemailer.createTransport({
 });
 
 const supportPhone = "+0203 780 5023";
-const supportEmail = "admin@vivavistavacations.ca";
+const supportEmail = "admin@vivavistavacations.us";
 
 const adminEmails = [
-  "admin@vivavistavacations.ca",
-  "mickey@vivavistavacations.ca",
+  "admin@vivavistavacations.us",
+  "mickey@vivavistavacations.us",
   "vivavistavacations@gmail.com",
 ];
 

@@ -7,4 +7,4 @@ export const Base_Url = "https://api.vivavistavacations.us/api";
 // The base server URL (without /api)
 // export const Server_Url = "http://localhost:5003";
 // export const Server_Url = "https://vivavista-backend.onrender.com";
-// export const Server_Url = "https://api.vivavistavacations.ca";
+// export const Server_Url = "https://api.vivavistavacations.us";

@@ -129,7 +129,7 @@ const faqs = [
   {
     question: "Amendments or Cancellations to Your Booking",
     answer:
-      "If you need to make any changes to your booking, please contact our Customer Service team at 1 8** *** ****, or reach us via email at admin@vivavistavacations.ca. Cancellations are subject to the supplier's terms and conditions, and additional charges may apply.",
+      "If you need to make any changes to your booking, please contact our Customer Service team at 1 8** *** ****, or reach us via email at admin@vivavistavacations.us. Cancellations are subject to the supplier's terms and conditions, and additional charges may apply.",
     contactNumber: "1 8** *** ****",
     lists: [],
     links: [],
