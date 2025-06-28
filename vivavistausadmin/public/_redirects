@@ -1,0 +1,3 @@
+/* /index.html 200
+/old-path    /new-path    301
+/api/*  http://44.203.130.86:5001/api/:splat  200

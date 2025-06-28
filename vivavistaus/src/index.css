@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  /* font-family: "Winky Sans", sans-serif !important; */
+  /* font-family: "Comic Relief", sans-serif !important; */
+  font-family: "Nunito", sans-serif !important;
+}
+
+.customfonts {
+  /* font-family: "Winky Sans", sans-serif; */
+}
+
+.customfontstitle {
+  /* font-family: "Comic Relief", sans-serif; */
+  font-family: "Nunito", sans-serif;
+}
+
+/* hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 4px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(0, 0, 0); /* Background of the scrollbar track */
+  border-radius: 1px; /* Radius of the scrollbar track */
+}
+
+@keyframes scrollEffect {
+  0% {
+    background: rgb(0, 115, 180);
+  }
+  50% {
+    background: rgb(0, 115, 190);
+  }
+  100% {
+    background: rgb(0, 120, 200);
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 115, 180); /* Initial color of the scrollbar thumb */
+  border-radius: 2px; /* Radius of the scrollbar thumb */
+  transition: background 0.5s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(255, 87, 34); /* Color of the scrollbar thumb on hover */
+}

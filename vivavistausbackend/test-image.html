@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .image-container {
+            margin: 20px 0;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .path {
+            font-family: monospace;
+            background: #f0f0f0;
+            padding: 5px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Access Test</h1>
+    
+    <div class="image-container">
+        <h2>Test 1: Direct Path</h2>
+        <div class="path">/uploads/carousel/1749857205583-WhatsApp Image 2025-05-27 at 03.21.33_01bf6f10.webp</div>
+        <img src="/uploads/carousel/1749857205583-WhatsApp Image 2025-05-27 at 03.21.33_01bf6f10.webp" alt="Test Image 1">
+    </div>
+    
+    <div class="image-container">
+        <h2>Test 2: URL Encoded Path</h2>
+        <div class="path">/uploads/carousel/1749857205583-WhatsApp%20Image%202025-05-27%20at%2003.21.33_01bf6f10.webp</div>
+        <img src="/uploads/carousel/1749857205583-WhatsApp%20Image%202025-05-27%20at%2003.21.33_01bf6f10.webp" alt="Test Image 2">
+    </div>
+
+    <div class="image-container">
+        <h2>Test 3: With G instead of 6</h2>
+        <div class="path">/uploads/carousel/1749857205583-WhatsApp Image 2025-05-27 at 03.21.33_01bfGf10.webp</div>
+        <img src="/uploads/carousel/1749857205583-WhatsApp Image 2025-05-27 at 03.21.33_01bfGf10.webp" alt="Test Image 3">
+    </div>
+
+    <div class="image-container">
+        <h2>Test 4: URL Encoded With G instead of 6</h2>
+        <div class="path">/uploads/carousel/1749857205583-WhatsApp%20Image%202025-05-27%20at%2003.21.33_01bfGf10.webp</div>
+        <img src="/uploads/carousel/1749857205583-WhatsApp%20Image%202025-05-27%20at%2003.21.33_01bfGf10.webp" alt="Test Image 4">
+    </div>
+
+    <div class="image-container">
+        <h2>Test 5: Without Spaces</h2>
+        <div class="path">/uploads/carousel/1749857205583-WhatsAppImage2025-05-27at03.21.33_01bf6f10.webp</div>
+        <img src="/uploads/carousel/1749857205583-WhatsAppImage2025-05-27at03.21.33_01bf6f10.webp" alt="Test Image 5">
+    </div>
+
+    <script>
+        document.querySelectorAll('img').forEach(img => {
+            img.onerror = function() {
+                this.style.display = 'none';
+                const errorMsg = document.createElement('p');
+                errorMsg.textContent = 'Image failed to load';
+                errorMsg.style.color = 'red';
+                this.parentNode.appendChild(errorMsg);
+            };
+            
+            img.onload = function() {
+                const successMsg = document.createElement('p');
+                successMsg.textContent = 'Image loaded successfully!';
+                successMsg.style.color = 'green';
+                this.parentNode.appendChild(successMsg);
+            };
+        });
+    </script>
+</body>
+</html> 
