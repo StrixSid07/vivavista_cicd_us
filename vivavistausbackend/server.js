@@ -32,7 +32,7 @@ ensureUploadDirectories().then(() => {
 });
 
 // Define the server URL for image paths
-const SERVER_URL = process.env.SERVER_URL || `http://localhost:${process.env.PORT || 5003}`;
+const SERVER_URL = process.env.SERVER_URL || `http://localhost:${process.env.PORT || 5004}`;
 console.log(`🌐 Server URL for images: ${SERVER_URL}`);
 
 // CORS Configuration
@@ -45,12 +45,12 @@ const corsOptions = {
     "https://54.172.95.174",
     "https://vivavista.netlify.app",
     "http://vivavistaadmin.netlify.app",
-    "http://vivavistavacations.ca",
-    "http://www.vivavistavacations.ca",
-    "https://vivavistavacations.ca",
-    "https://admin.vivavistavacations.ca",
-    "https://www.vivavistavacations.ca",
-    "https://api.vivavistavacations.ca",
+    "http://vivavistavacations.us",
+    "http://www.vivavistavacations.us",
+    "https://vivavistavacations.us",
+    "https://admin.vivavistavacations.us",
+    "https://www.vivavistavacations.us",
+    "https://api.vivavistavacations.us",
     "http://localhost:5175/",
   ],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -69,8 +69,8 @@ app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      imgSrc: ["'self'", "data:", "blob:", SERVER_URL, "http://localhost:5003", "https:", "http:"],
-      connectSrc: ["'self'", SERVER_URL, "http://localhost:5003", "https:", "http:"]
+      imgSrc: ["'self'", "data:", "blob:", SERVER_URL, "http://localhost:5004", "https:", "http:"],
+      connectSrc: ["'self'", SERVER_URL, "http://localhost:5004", "https:", "http:"]
     }
   }
 }));
@@ -165,7 +165,7 @@ swaggerDocs(app);
 // ✅ Auto-detect whether running locally or on the server
 const isLocal = process.env.NODE_ENV === "development";
 
-const PORT = process.env.PORT || 5003;
+const PORT = process.env.PORT || 5004;
 
 if (isLocal) {
   console.log("🚀 ~ isLocal:", isLocal);
