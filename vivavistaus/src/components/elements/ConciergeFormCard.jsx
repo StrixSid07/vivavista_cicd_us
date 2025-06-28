@@ -46,7 +46,7 @@ const ConciergeFormCard = ({
   React.useEffect(() => {
     if (countries.length) {
       const defaultIndex = countries.findIndex(
-        (c) => c.name === "Canada"
+        (c) => c.name === "United States"
       );
       if (defaultIndex !== -1) {
         setCountry(defaultIndex);

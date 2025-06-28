@@ -33,7 +33,7 @@ const ContactUs = () => {
   useEffect(() => {
     if (countries.length) {
       const defaultIndex = countries.findIndex(
-        (c) => c.name === "Canada"
+        (c) => c.name === "United States"
       );
       if (defaultIndex !== -1) {
         setCountry(defaultIndex);
@@ -42,8 +42,8 @@ const ContactUs = () => {
   }, [countries]);
 
   const { name, flags, countryCallingCode } = countries[country] || {
-    name: "Canada",
-    flags: { svg: "https://flagcdn.com/ca.svg" },
+    name: "United States",
+    flags: { svg: "https://flagcdn.com/us.svg" },
     countryCallingCode: "+1",
   };
 

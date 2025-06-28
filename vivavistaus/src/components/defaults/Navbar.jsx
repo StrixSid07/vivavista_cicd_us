@@ -120,7 +120,7 @@ const Navbar = () => {
   };
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [region, setRegion] = useState("Canada"); // Changed default from UK to Canada
+  const [region, setRegion] = useState("USA"); // Changed default to USA
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [dropdownStates, setDropdownStates] = useState({});

@@ -39,11 +39,11 @@ export default function GroupBookingForm() {
   const { countries } = useCountries();
   const [country, setCountry] = React.useState(0);
 
-  // Set UK as default once countries are loaded
+  // Set USA as default once countries are loaded
   React.useEffect(() => {
     if (countries.length) {
       const defaultIndex = countries.findIndex(
-        (c) => c.name === "Canada"
+        (c) => c.name === "United States"
       );
       if (defaultIndex !== -1) {
         setCountry(defaultIndex);

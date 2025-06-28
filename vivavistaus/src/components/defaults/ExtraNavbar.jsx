@@ -18,7 +18,7 @@ const flagUrls = {
 
 const ExtraNavbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [region, setRegion] = useState("Canada"); // Default to Canada
+  const [region, setRegion] = useState("USA"); // Default to USA
 
   return (
     <header className="bg-[#0073b4] text-white py-1 text-base">
