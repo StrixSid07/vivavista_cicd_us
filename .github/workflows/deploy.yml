@@ -1,0 +1,70 @@
+name: Deploy US Site to Hostinger VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p ${{ secrets.VPS_PORT }} ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to Hostinger US VPS
+        run: |
+          ssh -p ${{ secrets.VPS_PORT }} ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_HOST }} << 'EOF'
+            set -e
+            echo "🔗 Logged into VPS"
+
+            cd /var/www
+
+            # Clone US repo if not exists
+            if [ ! -d vivavista_cicd_us ]; then
+              echo "🌀 Cloning US repo..."
+              git clone https://github.com/StrixSid07/vivavista_cicd_us.git
+            fi
+
+            cd vivavista_cicd_us
+            git fetch origin
+            git reset --hard origin/main
+
+            echo "🚀 Backend: vivavistausbackend"
+            cd vivavistausbackend
+            npm install
+            pm2 stop vivavista-backend-us || true
+            pm2 start server.js --name vivavista-backend-us --watch --time --log-date-format="YYYY-MM-DD HH:mm Z"
+            pm2 save
+            pm2 startup
+
+            echo "🛠️ Admin Panel: vivavistausadmin"
+            cd ../vivavistausadmin
+            npm install
+            npm run build || { echo "❌ Admin panel build failed"; exit 1; }
+
+            mkdir -p /var/www/vivavistausadmin
+            rm -rf /var/www/vivavistausadmin/*
+            cp -r dist/* /var/www/vivavistausadmin/
+            echo "✅ Admin panel deployed"
+
+            echo "🌐 Main Site: vivavistaus"
+            cd ../vivavistaus
+            npm install
+            npm run build || { echo "❌ Main site build failed"; exit 1; }
+
+            mkdir -p /var/www/vivavistaus
+            rm -rf /var/www/vivavistaus/*
+            cp -r dist/* /var/www/vivavistaus/
+            echo "✅ Main site deployed"
+
+            echo "✅ Deployment to US VPS complete!"
+          EOF
