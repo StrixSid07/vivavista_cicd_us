@@ -449,7 +449,7 @@ const Navbar = () => {
                           </motion.div>
                         </button>
                         {dropdownStates[index] && (
-                          <ul className="absolute grid grid-cols-3 gap-4 top-full bg-white drop-shadow-lg shadow-lg rounded-lg w-[700px] z-50 pt-10">
+                          <ul className="absolute grid grid-cols-3 gap-4 top-full bg-white drop-shadow-lg shadow-lg rounded-lg w-[700px] z-50 pt-10 max-h-[400px] overflow-y-auto">
                             {item.dropdown.map((subItem, subIndex) => (
                               <li key={subIndex}>
                                 <Link
