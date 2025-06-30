@@ -242,7 +242,7 @@ const Navbar = () => {
                   {["Canada", "USA", "UK"].map((item) => {
                                           const urls = {
                       UK: "https://www.vivavistavacations.co.uk/",
-                      USA: "https://www.vivavistavacations.com/",
+                      USA: "https://www.vivavistavacations.us/",
                       Canada: "https://www.vivavistavacations.ca/",
                     };
 
@@ -527,7 +527,7 @@ const Navbar = () => {
                     {["Canada", "USA", "UK"].map((item) => {
                       const urls = {
                         UK: "https://www.vivavistavacations.co.uk/",
-                        USA: "https://www.vivavistavacations.com/",
+                        USA: "https://www.vivavistavacations.us/",
                         Canada: "https://www.vivavistavacations.ca/",
                       };
 
