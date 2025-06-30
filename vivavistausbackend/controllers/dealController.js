@@ -130,10 +130,8 @@ const createDeal = async (req, res) => {
         .json({ message: "At least one price entry is required." });
     }
 
-    // Validate itinerary items
-    const cleanItinerary = itinerary.filter(
-      (item) => item.title && item.description
-    );
+    // Use itinerary as-is without filtering (like in updateDeal)
+    const cleanItinerary = itinerary || [];
 
     // Validate price entries
     for (const [index, priceObj] of prices.entries()) {
