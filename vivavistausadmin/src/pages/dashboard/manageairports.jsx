@@ -27,13 +27,19 @@ export function ManageAirports() {
   const [deleteInProgress, setDeleteInProgress] = useState(false);
 
   const categories = [
-    "British Columbia",
-    "Alberta",
-    "Saskatchewan",
-    "Manitoba",
-    "Ontario",
-    "Quebec",
-    "Nova Scotia",
+    "Georgia",
+    "Massachusetts",
+    "Colorado",
+    "Texas",
+    "Michigan",
+    "New Jersey",
+    "Virginia",
+    "New York",
+    "Nevada",
+    "California",
+    "Florida",
+    "Illinois",
+    "Pennsylvania",
   ];
 
   // State for delete confirmation dialog
