@@ -251,7 +251,6 @@ const Navbar = () => {
                         key={item}
                         className="flex items-center space-x-2 px-4 py-2 hover:bg-gray-200 text-[#D35400] font-semibold cursor-pointer transition-all duration-200"
                         onClick={() => {
-                          setRegion(item);
                           setIsDropdownOpen(false);
                           window.open(urls[item], '_blank'); // ⬅️ Open in new tab
                         }}
@@ -536,7 +535,6 @@ const Navbar = () => {
                           key={item}
                           className="flex items-center space-x-2 px-4 py-2 hover:bg-gray-200 text-[#D35400] font-semibold cursor-pointer transition-all duration-200"
                           onClick={() => {
-                            setRegion(item);
                             setIsDropdownOpen(false);
                             window.open(urls[item], '_blank'); // 🔁 Open in new tab
                           }}
