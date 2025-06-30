@@ -218,15 +218,15 @@ export default function FooterNew() {
         </div>
         <div className="flex flex-col justify-center items-center text-center">
           <p className="px-4">
-            The Government of Canada offers comprehensive, up-to-date travel advice, covering important information on safety, entry requirements, health, and travel warnings tailored to each destination. For Canadians planning international travel, this resource provides crucial updates to help prepare for safe and informed journeys. Given the dynamic nature of global conditions, travelers are encouraged to consult the Government of Canada's travel advisories before departure and regularly during their travels to stay informed of any changes.
+            Travelers are advised to follow the travel advisories from the U.S. Department of State, which categorize destinations by risk level to help assess safety. There are currently no COVID-19 testing or vaccination requirements for entering the U.S., but it is crucial to stay informed about any updates to health regulations. Additionally, registration with the Smart Traveler Enrollment Program (STEP) is recommended for important alerts and assistance while traveling. For more information, visit the
           </p>
           <a
-            href="https://travel.gc.ca/travelling/advisories"
+            href="https://travel.state.gov/content/travel.html"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 transition duration-700 hover:text-blue-400"
           >
-            travel.gc.ca/travelling/advisories
+            travel.state.gov/content/travel.html
           </a>
         </div>
       </div>

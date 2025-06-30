@@ -4,7 +4,7 @@ const CookiePolicy = () => {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <h1 className="text-4xl font-bold text-center mb-8">
-        Cookie Policy – Viva Vista Vacations
+        Cookie Policy - Viva Vista Vacations
       </h1>
 
       <section className="mb-6">

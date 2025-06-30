@@ -96,7 +96,7 @@ const MainScreen = () => {
       </div>
       <div className="mt-[420px] md:mt-0 w-full z-10 flex justify-center items-center bg-white/30 font-body text-black py-2 mb-10">
         <div className="text-xl md:text-4xl p-2 md:p-0 mt-10 font-bold text-center max-w-4xl customfontstitle -mb-12 mb:mb-0">
-          Top Tier Picks - Zero Fluff, Pure Value.
+        Elite Escapes - Only the Best, No Gimmicks.
         </div>
       </div>
       {/* <NewAdded data={data?.featuredDeals} /> */}

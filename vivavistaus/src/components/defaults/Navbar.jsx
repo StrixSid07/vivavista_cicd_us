@@ -63,7 +63,7 @@ const Navbar = () => {
 
   const navItems = [
     // { name: "Home", href: "/", icon: home },
-    { name: "Travel Bundle", href: "/packages", icon: packageImg },
+    { name: "Wanderlust Deal", href: "/packages", icon: packageImg },
     { name: "Hot Bargains", href: "/topdeals", icon: hot },
     {
       name: "Vacations",
@@ -89,7 +89,7 @@ const Navbar = () => {
 
   const navItemsForMobile = [
     // { name: "Home", href: "/" },
-    { name: "Travel Bundle", href: "/packages" },
+    { name: "Wanderlust Deal", href: "/packages" },
     { name: "Hot Bargains", href: "/topdeals" },
     {
       name: "Vacations",
