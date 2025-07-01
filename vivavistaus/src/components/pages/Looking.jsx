@@ -89,7 +89,7 @@ const Looking = () => {
       {/* Cards */}
       <motion.div
         ref={ref}
-        className="flex flex-wrap md:justify-between justify-center gap-6 px-6 mt-24 md:mt-32"
+        className="flex justify-center items-center gap-1 md:gap-3 px-1 md:px-4 mt-24 md:mt-32 overflow-x-auto"
         variants={containerVariants}
         initial="hidden"
         animate={controls}
@@ -97,24 +97,26 @@ const Looking = () => {
         {lookingOptions.map((option, index) => (
           <motion.div
             key={index}
-            className="bg-white w-64 h-64 md:w-60 md:h-60 rounded-2xl shadow-xl text-center group transition-all duration-500 hover:scale-105 relative overflow-hidden"
+            className="bg-white min-w-[140px] w-36 h-40 md:min-w-[160px] md:w-40 md:h-44 lg:min-w-[180px] lg:w-44 lg:h-48 rounded-2xl text-center group transition-all duration-500 hover:scale-105 relative overflow-hidden flex-shrink-0 flex flex-col"
             variants={itemVariants}
           >
             {/* Animated Background Accent */}
-            <div className="absolute top-0 right-0 h-40 w-40 bg-green-500 rounded-full transform -translate-y-1/2 translate-x-1/2 transition-all duration-[2000ms] ease-in-out group-hover:scale-[15] group-hover:rounded-none group-hover:w-full group-hover:h-full z-0"></div>
+            <div className="absolute top-0 right-0 h-20 w-20 md:h-24 md:w-24 lg:h-28 lg:w-28 bg-green-500 rounded-full transform -translate-y-1/2 translate-x-1/2 transition-all duration-[2000ms] ease-in-out group-hover:scale-[15] group-hover:rounded-none group-hover:w-full group-hover:h-full z-0"></div>
 
             {/* Icon */}
-            <div className="relative z-10 flex items-center justify-center h-2/3">
+            <div className="relative z-10 flex items-center justify-center flex-1 pt-4">
               <option.icon
-                size={72}
-                className="text-[#0078D4] text-4xl md:text-5xl group-hover:text-white transition-all duration-300"
+                size={40}
+                className="text-[#0078D4] text-3xl md:text-4xl lg:text-5xl group-hover:text-white transition-all duration-300"
               />
             </div>
 
             {/* Title */}
-            <h3 className="relative z-10 text-[#0078D4] text-lg md:text-xl font-semibold group-hover:text-white transition-colors duration-300 px-4">
-              {option.title}
-            </h3>
+            <div className="relative z-10 flex-1 flex items-center justify-center px-2 pb-4">
+              <h3 className="text-[#0078D4] text-xs md:text-sm lg:text-base font-semibold group-hover:text-white transition-colors duration-300 leading-tight text-center">
+                {option.title}
+              </h3>
+            </div>
           </motion.div>
         ))}
       </motion.div>
