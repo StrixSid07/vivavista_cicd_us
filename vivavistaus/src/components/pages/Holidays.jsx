@@ -95,6 +95,9 @@ const Holidays = () => {
   useEffect(() => {
     if (!slug || !holidayCategories.length) return;
 
+    // Reset pagination to page 1 when vacation type changes
+    setCurrentPage(1);
+
     // Set vacation title from slug using dynamic mapping
     const title = getVacationTitleFromSlug(slug, holidayCategories);
     setVacationTypeTitle(title);
