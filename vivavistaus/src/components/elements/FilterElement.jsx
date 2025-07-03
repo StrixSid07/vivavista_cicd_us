@@ -437,6 +437,7 @@ const FilterElement = ({
           color="white"
           className={`flex flex-col items-center p-4 bg-gradient-to-r from-blue-500 to-indigo-600 cursor-pointer ${isMobileView ? "py-3" : "py-6"
             }`}
+          style={{ minHeight: isMobileView ? "120px" : "140px" }}
           onClick={(e) => {
             e.stopPropagation();
             handlePriceCardInteraction();
