@@ -21,6 +21,8 @@ const CalendarView = ({
 }) => {
   const { leadPrice, setLeadPrice } = useContext(LeadContext);
   console.log("this is deal id from clendercard", dealId);
+  const [didSetInitialMonth, setDidSetInitialMonth] = useState(false);
+
   const { dealIdform } = useContext(LeadContext);
   const { adultCount } = useContext(LeadContext);
   const parsedDates = useMemo(() => {
@@ -118,16 +120,21 @@ const CalendarView = ({
   
   // Update currentMonth when parsedDates changes to show the first month with data
   useEffect(() => {
-    if (!Array.isArray(parsedDates) || parsedDates.length === 0) return;
-    
-    // Find the first date that has valid data
-    const firstValidDate = parsedDates.find(d => d && d.date && d.price);
+    if (
+      didSetInitialMonth ||
+      !Array.isArray(parsedDates) ||
+      parsedDates.length === 0
+    )
+      return;
+
+    const firstValidDate = parsedDates.find((d) => d && d.date && d.price);
     if (firstValidDate) {
       const newMonth = firstValidDate.date.startOf("month");
-      console.log("Setting month to:", newMonth.format("MMMM YYYY"));
+      console.log("Setting initial month to:", newMonth.format("MMMM YYYY"));
       setCurrentMonth(newMonth);
+      setDidSetInitialMonth(true); // Prevent future resets
     }
-  }, [parsedDates]);
+  }, [parsedDates, didSetInitialMonth]);
 
   const dateMap = useMemo(() => {
     const map = {};
