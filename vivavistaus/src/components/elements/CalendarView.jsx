@@ -22,101 +22,157 @@ const CalendarView = ({
   const { leadPrice, setLeadPrice } = useContext(LeadContext);
   console.log("this is deal id from clendercard", dealId);
   const [didSetInitialMonth, setDidSetInitialMonth] = useState(false);
-
+  const [lastAirport, setLastAirport] = useState(null);
   const { dealIdform } = useContext(LeadContext);
   const { adultCount } = useContext(LeadContext);
   const parsedDates = useMemo(() => {
-    // Parse and sort the dates using the provided "DD/MM/YYYY" format
-    // console.log("this is selected airport", selectedAirport);
-    // console.log("this is departure airports", departureAirports);
-    console.log("priceswitch", priceswitch);
-    console.log("price map", priceMap);
-    console.log("this is despature date", departureDates);
-    console.log("this is id's", pricesid);
+    console.log("========== 🔍 parsedDates Debugging =============");
+    console.log("🛫 selectedAirport:", selectedAirport);
+    console.log("📦 departureAirports:", departureAirports);
+    console.log("📅 departureDates:", departureDates);
+    console.log("🔑 pricesid:", pricesid);
+    console.log("💰 priceMap keys:", Object.keys(priceMap));
+    console.log("🧪 priceswitch:", priceswitch);
+
     const sortedDates = departureDates
       .map((d) => dayjs(d, "DD/MM/YYYY"))
       .sort((a, b) => (a.isBefore(b) ? -1 : 1));
-    console.log("this is sortedDates ", sortedDates);
-    console.log("this is airpot", departureAirports);
 
-    // Map each sorted date with its airport and price from the priceMap using the same format
+    console.log(
+      "✅ sortedDates:",
+      sortedDates.map((d) => d.format("DD/MM/YYYY"))
+    );
+
     const allParsedDates = sortedDates.map((date, i) => {
       const formattedDate = date.format("DD/MM/YYYY");
-
       const idprice = pricesid[i];
       const fullKey = `${formattedDate}_${idprice}`;
+      const price = priceMap[fullKey] || 0;
 
-      // Safely access the airport, ensuring it exists and has the expected structure
       const airportArray = departureAirports[i % departureAirports.length];
-      const airport = Array.isArray(airportArray) && airportArray.length > 0 ? airportArray[0] : airportArray;
-      
+      const airport =
+        Array.isArray(airportArray) && airportArray.length > 0
+          ? airportArray[0]
+          : airportArray;
+
+      console.log(`📌 Entry ${i}: ${formattedDate}`);
+      console.log("  └ fullKey:", fullKey);
+      console.log("  └ airportId:", airport?._id);
+      console.log("  └ price:", price);
+
       return {
         date,
         airport,
-        price: priceMap[fullKey] || 0,
+        price,
       };
     });
 
-    console.log("this is all parsed dates", allParsedDates);
-    
-    // Filter out entries with invalid airports and then filter by selected airport
-    const finaldata = allParsedDates.filter(
-      (d) => d.airport && d.airport._id && d.airport._id === selectedAirport
+    console.log(
+      "📊 allParsedDates:",
+      allParsedDates.map((d) => ({
+        date: d.date.format("DD/MM/YYYY"),
+        airportId: d.airport?._id,
+        price: d.price,
+      }))
     );
-    
-    console.log("this is all finaldata", finaldata);
-    
-    // Safely filter by priceswitch, ensuring price object has the expected structure
+
+    const finaldata = allParsedDates.filter((d) => {
+      const match = d.airport && d.airport._id === selectedAirport;
+      console.log(`🧹 Filter by airport | ${d.date.format("DD/MM/YYYY")}:`, {
+        airport: d.airport?._id,
+        match,
+      });
+      return match;
+    });
+
+    console.log(
+      "✅ Filtered by selectedAirport:",
+      finaldata.map((d) => ({
+        date: d.date.format("DD/MM/YYYY"),
+        airportId: d.airport?._id,
+        price: d.price,
+      }))
+    );
+
     const finaltwo = finaldata.filter((d) => {
-      // Check if price exists and has the expected structure
       if (!d.price) {
-        console.log("No price object found for:", d);
+        console.log("⛔ No price found for:", d);
         return false;
       }
-      
-      // Handle different price object structures
-      if (typeof d.price === 'object') {
-        // If price is an object, check the priceswitch property
-        const priceswitch = d.price.priceswitch;
-        console.log("Price object:", d.price, "priceswitch:", priceswitch);
-        return priceswitch === false;
+
+      if (typeof d.price === "object") {
+        const flag = d.price.priceswitch;
+        console.log(`⚙️ Price Object Check | ${d.date.format("DD/MM/YYYY")}:`, {
+          value: d.price.value,
+          priceswitch: flag,
+        });
+        return flag === false;
       } else {
-        // If price is just a number, include it (assume no priceswitch means it's valid)
-        console.log("Price is a number:", d.price);
+        console.log(
+          `✅ Price as number | ${d.date.format("DD/MM/YYYY")}: ${d.price}`
+        );
         return true;
       }
     });
 
-    console.log("this is final two", finaltwo);
-    
+    console.log(
+      "✅ After priceswitch filter:",
+      finaltwo.map((d) => ({
+        date: d.date.format("DD/MM/YYYY"),
+        airportId: d.airport?._id,
+        price: d.price,
+      }))
+    );
+
     const finalThree = finaltwo.map((d) => {
-      // Destructure the price object and remove the 'priceswitch' field
       const { price, ...rest } = d;
-      
       let finalPrice;
-      if (typeof price === 'object' && price !== null) {
-        // If price is an object, extract the value
+      if (typeof price === "object") {
         finalPrice = price.value || price.price || 0;
-        console.log("Extracting price from object:", price, "final price:", finalPrice);
       } else {
-        // If price is already a number, use it directly
         finalPrice = price;
-        console.log("Using price directly:", finalPrice);
       }
-      
+
       return {
-        ...rest, // Keep all other properties (e.g., airport, date)
-        price: finalPrice, // Use the extracted price value
+        ...rest,
+        price: finalPrice,
       };
     });
 
-    console.log("finalThree result:", finalThree);
-    return finalThree; // Compare by _id
+    console.log(
+      "✅ finalThree (cleaned prices):",
+      finalThree.map((d) => ({
+        date: d.date.format("DD/MM/YYYY"),
+        airportId: d.airport?._id,
+        price: d.price,
+      }))
+    );
+    console.log("==============================================");
+
+    return finalThree;
   }, [departureDates, departureAirports, priceMap, selectedAirport, pricesid]);
+  
 
   console.log("parsh data", parsedDates);
   
   const [currentMonth, setCurrentMonth] = useState(dayjs().startOf("month"));
+  useEffect(() => {
+    if (!parsedDates || parsedDates.length === 0) return;
+
+    // Only trigger when airport changes
+    if (selectedAirport !== lastAirport) {
+      const firstValidDate = parsedDates.find((d) => d && d.date && d.price);
+      if (firstValidDate) {
+        const newMonth = firstValidDate.date.startOf("month");
+        console.log(
+          "Airport changed: resetting calendar to",
+          newMonth.format("MMMM YYYY")
+        );
+        setCurrentMonth(newMonth);
+        setLastAirport(selectedAirport); // update the tracked airport
+      }
+    }
+  }, [selectedAirport, parsedDates]);
   
   // Update currentMonth when parsedDates changes to show the first month with data
   useEffect(() => {

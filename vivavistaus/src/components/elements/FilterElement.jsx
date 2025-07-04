@@ -429,21 +429,26 @@ const FilterElement = ({
   return (
     <>
       <Card
-        className={`w-full shadow-lg transition-all duration-300 hover:shadow-xl ${!isMobileView ? "sticky top-20" : ""
-          } mt-0`}
+        className={`w-full shadow-lg transition-all duration-300 hover:shadow-xl ${
+          !isMobileView ? "sticky top-20" : ""
+        } mt-0`}
         style={{ maxHeight: isMobileView ? "none" : "calc(100vh - 100px)" }}
       >
         <CardHeader
           color="white"
-          className={`flex flex-col items-center p-4 bg-gradient-to-r from-blue-500 to-indigo-600 cursor-pointer ${isMobileView ? "py-3" : "py-6"
-            }`}
+          className={`flex flex-col items-center p-4 bg-gradient-to-r from-blue-500 to-indigo-600 cursor-pointer ${
+            isMobileView ? "py-3" : "py-6"
+          }`}
           style={{ minHeight: isMobileView ? "120px" : "140px" }}
           onClick={(e) => {
             e.stopPropagation();
             handlePriceCardInteraction();
           }}
         >
-          <Typography variant="small" className="text-white customfontstitle mb-1">
+          <Typography
+            variant="small"
+            className="text-white customfontstitle mb-1"
+          >
             Price from
           </Typography>
           <Typography
@@ -452,18 +457,26 @@ const FilterElement = ({
           >
             ${leadPrice}
           </Typography>
-          <Typography variant="small" className="text-white customfontstitle mt-1">
+          <Typography
+            variant="small"
+            className="text-white customfontstitle mt-1"
+          >
             per person
           </Typography>
         </CardHeader>
 
         {/* Body: Selectors & Price */}
-        <CardBody className={`p-4 space-y-6 ${isMobileView ? "py-3" : "px-5 py-5"}`}>
+        <CardBody
+          className={`p-4 space-y-6 ${isMobileView ? "py-3" : "px-5 py-5"}`}
+        >
           {/* Departure Airport */}
-          <div onClick={handlePriceCardInteraction} className={isMobileView ? "" : "mb-2"}>
+          <div
+            onClick={handlePriceCardInteraction}
+            className={isMobileView ? "" : "mb-2"}
+          >
             <Typography
               variant="small"
-              className="font-medium text-gray-700 mb-2 customfontstitle"
+              className="font-bold text-black mb-2 customfontstitle"
             >
               Departure Airport
             </Typography>
@@ -498,7 +511,7 @@ const FilterElement = ({
           >
             <Typography
               variant="small"
-              className="font-medium text-gray-700 mb-2 customfontstitle"
+              className="font-bold text-black mb-2 customfontstitle"
             >
               Number of Travelers
             </Typography>
@@ -539,10 +552,11 @@ const FilterElement = ({
           >
             <Typography
               variant="small"
-              className="font-medium text-gray-700 customfontstitle"
+              className="font-bold text-black customfontstitle"
             >
               Total Price:
             </Typography>
+
             <Typography
               variant={isMobileView ? "h6" : "h5"}
               className="font-bold tracking-wide bg-transparent bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600 customfontstitle"
@@ -553,7 +567,11 @@ const FilterElement = ({
         </CardBody>
 
         {/* Footer: Button & Contact Info */}
-        <CardFooter className={`p-4 pt-2 space-y-4 ${isMobileView ? "py-3" : "px-5 py-5"}`}>
+        <CardFooter
+          className={`p-4 pt-2 space-y-4 ${
+            isMobileView ? "py-3" : "px-5 py-5"
+          }`}
+        >
           <Button
             size={isMobileView ? "md" : "lg"}
             className="transition-colors duration-500 ease-in-out bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-indigo-600 hover:to-blue-700 w-full normal-case text-white font-semibold customfontstitle py-3"
@@ -703,56 +721,73 @@ const FilterElement = ({
         </Dialog>
       </Card>
       <Card
-        className={`w-full shadow-lg transition-all duration-300 hover:shadow-xl p-2 ${!isMobileView ? "sticky top-20" : ""
-          } mt-4`}
+        className={`w-full shadow-lg transition-all duration-300 hover:shadow-xl p-2 ${
+          !isMobileView ? "sticky top-20" : ""
+        } mt-4`}
         style={{ maxHeight: isMobileView ? "none" : "calc(100vh - 100px)" }}
       >
         {/* Airport Prices List */}
-        {prices && prices.length > 0 && (!isMobileView || windowHeight > 700) && (
-          <div className="">
-            <Typography variant="small" className="font-bold text-gray-800 mb-2 customfontstitle">
-              Lowest price from selected airport
-            </Typography>
-            <div className="space-y-2 max-h-32 border-t border-gray-200 overflow-y-auto pt-2 pr-2">
-              {(() => {
-                // Process prices to find cheapest price for each unique airport
-                const airportPriceMap = {};
-                prices.forEach(priceItem => {
-                  if (priceItem.airport && priceItem.price) {
-                    const airportId = priceItem.airport._id;
-                    if (!airportPriceMap[airportId] || airportPriceMap[airportId].price > priceItem.price) {
-                      airportPriceMap[airportId] = {
-                        airport: priceItem.airport,
-                        price: priceItem.price
-                      };
+        {prices &&
+          prices.length > 0 &&
+          (!isMobileView || windowHeight > 700) && (
+            <div className="">
+              <Typography
+                variant="small"
+                className="font-bold text-gray-800 mb-2 customfontstitle"
+              >
+                Lowest price from selected airport
+              </Typography>
+              <div className="space-y-2 max-h-32 border-t border-gray-200 overflow-y-auto pt-2 pr-2">
+                {(() => {
+                  // Process prices to find cheapest price for each unique airport
+                  const airportPriceMap = {};
+                  prices.forEach((priceItem) => {
+                    if (priceItem.airport && priceItem.price) {
+                      const airportId = priceItem.airport._id;
+                      if (
+                        !airportPriceMap[airportId] ||
+                        airportPriceMap[airportId].price > priceItem.price
+                      ) {
+                        airportPriceMap[airportId] = {
+                          airport: priceItem.airport,
+                          price: priceItem.price,
+                        };
+                      }
                     }
-                  }
-                });
+                  });
 
-                // Convert to array and sort by price (cheapest first)
-                const sortedAirports = Object.values(airportPriceMap).sort((a, b) => a.price - b.price);
+                  // Convert to array and sort by price (cheapest first)
+                  const sortedAirports = Object.values(airportPriceMap).sort(
+                    (a, b) => a.price - b.price
+                  );
 
-                return sortedAirports.map((item, index) => (
-                  <div
-                    key={item.airport._id}
-                    className="flex items-center justify-between text-sm p-2 rounded cursor-pointer transition-shadow hover:shadow-md hover:bg-blue-50"
-                    onClick={() => {
-                      handleAirportChange(item.airport._id);
-                    }}
-                  >
-                    <div className="flex-1">
-                      <div className="font-medium text-gray-700">{item.airport.name}</div>
-                      <div className="text-gray-500 text-sm">{item.airport.category}</div>
+                  return sortedAirports.map((item, index) => (
+                    <div
+                      key={item.airport._id}
+                      className="flex items-center justify-between text-sm p-2 rounded cursor-pointer transition-shadow hover:shadow-md hover:bg-blue-50"
+                      onClick={() => {
+                        handleAirportChange(item.airport._id);
+                      }}
+                    >
+                      <div className="flex-1">
+                        <div className="font-medium text-gray-700">
+                          {item.airport.name}
+                        </div>
+                        <div className="text-gray-500 text-sm">
+                          {item.airport.category}
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <span className="font-bold text-blue-600">
+                          ${item.price}
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <span className="font-bold text-blue-600">${item.price}</span>
-                    </div>
-                  </div>
-                ));
-              })()}
+                  ));
+                })()}
+              </div>
             </div>
-          </div>
-        )}
+          )}
       </Card>
     </>
   );
