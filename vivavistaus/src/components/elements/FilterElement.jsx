@@ -432,14 +432,21 @@ const FilterElement = ({
         className={`w-full shadow-lg transition-all duration-300 hover:shadow-xl ${
           !isMobileView ? "sticky top-20" : ""
         } mt-0`}
-        style={{ maxHeight: isMobileView ? "none" : "calc(100vh - 100px)" }}
+        style={{ 
+          maxHeight: isMobileView ? "none" : "calc(100vh - 100px)",
+          height: isMobileView ? "auto" : "auto",
+          minHeight: isMobileView ? "480px" : "520px" 
+        }}
       >
         <CardHeader
           color="white"
           className={`flex flex-col items-center p-4 bg-gradient-to-r from-blue-500 to-indigo-600 cursor-pointer ${
             isMobileView ? "py-3" : "py-6"
           }`}
-          style={{ minHeight: isMobileView ? "120px" : "140px" }}
+          style={{ 
+            minHeight: isMobileView ? "120px" : "140px",
+            height: isMobileView ? "120px" : "140px"
+          }}
           onClick={(e) => {
             e.stopPropagation();
             handlePriceCardInteraction();
@@ -467,7 +474,11 @@ const FilterElement = ({
 
         {/* Body: Selectors & Price */}
         <CardBody
-          className={`p-4 space-y-6 ${isMobileView ? "py-3" : "px-5 py-5"}`}
+          className={`p-4 space-y-4 ${isMobileView ? "py-3" : "px-5 py-4"}`}
+          style={{ 
+            height: isMobileView ? "auto" : "auto",
+            minHeight: isMobileView ? "200px" : "220px"
+          }}
         >
           {/* Departure Airport */}
           <div
@@ -559,7 +570,7 @@ const FilterElement = ({
 
             <Typography
               variant={isMobileView ? "h6" : "h5"}
-              className="font-bold tracking-wide bg-transparent bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600 customfontstitle"
+              className="font-bold tracking-wide bg-transparent bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600 customfontstitle total-price-display"
             >
               ${totalPrice}
             </Typography>
@@ -568,9 +579,13 @@ const FilterElement = ({
 
         {/* Footer: Button & Contact Info */}
         <CardFooter
-          className={`p-4 pt-2 space-y-4 ${
-            isMobileView ? "py-3" : "px-5 py-5"
+          className={`p-4 pt-2 space-y-3 ${
+            isMobileView ? "py-3" : "px-5 py-4"
           }`}
+          style={{ 
+            height: isMobileView ? "auto" : "auto",
+            minHeight: isMobileView ? "160px" : "160px" 
+          }}
         >
           <Button
             size={isMobileView ? "md" : "lg"}
@@ -579,34 +594,6 @@ const FilterElement = ({
           >
             Book Now
           </Button>
-          {/* <Button
-          size="lg"
-          className="
-    relative overflow-hidden bg-gray-200 w-full normal-case text-white font-semibold transition-all duration-[1000ms] ease-in-out
-    hover:text-white group"
-          onClick={handleSubmit}
-        >
-          <span
-            className="
-      absolute left-0 h-20 w-20 bg-[#e05c00] rounded-full transform -translate-x-1/2 -translate-y-1/2
-      transition-all duration-[1000ms] ease-in-out
-      group-hover:scale-[20] group-hover:w-full group-hover:h-full group-hover:rounded-none"
-          ></span>
-          <span className="relative z-10 text-deep-orange-600 transition-all duration-500 ease-in-out group-hover:text-white">
-            Book Now
-          </span>
-        </Button> */}
-
-          {/* <CalendarView
-          dealId={dealId}
-          dealtitle={dealtitle}
-          adultCount={adultCount}
-          departureDates={departureDates}
-          departureAirports={departureAirports}
-          priceMap={priceMap}
-          setSelectedTrip={setSelectedTrip} 
-          selectedAirport={selectedAirport}
-        /> */}
 
           {/* Phone / Call to Book - Only show on desktop or if mobile with more space */}
           {(!isMobileView || windowHeight > 700) && (
@@ -651,53 +638,6 @@ const FilterElement = ({
               </div>
             </div>
           )}
-
-          {/* Airport Prices List */}
-          {/* {prices && prices.length > 0 && (!isMobileView || windowHeight > 700) && (
-          <div className="mt-4 border-t border-gray-200 pt-4">
-            <Typography variant="small" className="font-semibold text-gray-800 mb-3 customfontstitle">
-              Lowest price from selected airport
-            </Typography>
-            <div className="space-y-2 max-h-32 overflow-y-auto pr-2">
-              {(() => {
-                // Process prices to find cheapest price for each unique airport
-                const airportPriceMap = {};
-                prices.forEach(priceItem => {
-                  if (priceItem.airport && priceItem.price) {
-                    const airportId = priceItem.airport._id;
-                    if (!airportPriceMap[airportId] || airportPriceMap[airportId].price > priceItem.price) {
-                      airportPriceMap[airportId] = {
-                        airport: priceItem.airport,
-                        price: priceItem.price
-                      };
-                    }
-                  }
-                });
-                
-                // Convert to array and sort by price (cheapest first)
-                const sortedAirports = Object.values(airportPriceMap).sort((a, b) => a.price - b.price);
-                
-                return sortedAirports.map((item, index) => (
-                  <div 
-                    key={item.airport._id} 
-                    className="flex items-center justify-between text-sm p-2 rounded cursor-pointer transition-shadow hover:shadow-md hover:bg-blue-50"
-                    onClick={() => {
-                      handleAirportChange(item.airport._id);
-                    }}
-                  >
-                    <div className="flex-1">
-                      <div className="font-medium text-gray-700">{item.airport.name}</div>
-                      <div className="text-gray-500 text-sm">{item.airport.category}</div>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <span className="font-bold text-blue-600">${item.price}</span>
-                    </div>
-                  </div>
-                ));
-              })()}
-            </div>
-          </div>
-        )} */}
         </CardFooter>
         <Dialog
           open={openDialog}
@@ -721,23 +661,31 @@ const FilterElement = ({
         </Dialog>
       </Card>
       <Card
-        className={`w-full shadow-lg transition-all duration-300 hover:shadow-xl p-2 ${
+        className={`w-full shadow-lg transition-all duration-300 hover:shadow-xl ${
           !isMobileView ? "sticky top-20" : ""
         } mt-4`}
-        style={{ maxHeight: isMobileView ? "none" : "calc(100vh - 100px)" }}
+        style={{ 
+          maxHeight: isMobileView ? "none" : "calc(100vh - 100px)",
+          height: isMobileView ? "auto" : "auto",
+          minHeight: isMobileView ? "160px" : "180px"
+        }}
       >
         {/* Airport Prices List */}
         {prices &&
           prices.length > 0 &&
           (!isMobileView || windowHeight > 700) && (
-            <div className="">
+            <div className="p-4">
               <Typography
                 variant="small"
                 className="font-bold text-gray-800 mb-2 customfontstitle"
               >
                 Lowest price from selected airport
               </Typography>
-              <div className="space-y-2 max-h-32 border-t border-gray-200 overflow-y-auto pt-2 pr-2">
+              <div className="space-y-2 border-t border-gray-200 overflow-y-auto pt-2 pr-2"
+                style={{ 
+                  maxHeight: isMobileView ? "120px" : "120px",
+                  minHeight: isMobileView ? "80px" : "80px"
+                }}>
                 {(() => {
                   // Process prices to find cheapest price for each unique airport
                   const airportPriceMap = {};
